@@ -86,4 +86,16 @@ class ComboBreakerClient
     @client.search(location, params).businesses
   end
 
+  def get_available_cuisines(results)
+    categories = []
+    results.businesses.each do |business|
+      business.categories.each do |category|
+        unless categories.include?(category)
+          categories << category
+        end
+      end
+    end
+    categories
+  end
+
 end
