@@ -44,5 +44,6 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'dotenv-rails'
 gem 'yelp'
 gem 'devise'
