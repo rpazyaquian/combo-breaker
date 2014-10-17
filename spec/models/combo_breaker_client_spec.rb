@@ -13,10 +13,9 @@ RSpec.describe ComboBreakerClient, :type => :model do
     @results = @combo_breaker_client.search(@params)
   end
 
-  it "returns a random cuisine" do
-    expect(@results[:cuisine]).to be_a(String)
+  it "returns a list of available cuisines" do
+    results = ComboBreakerClient.search('Coolidge Corner, Brookline, MA', { term: 'restaurant'} )
+    @combo_breaker_client.get_available_cuisines(results)
   end
-  it "returns a list of restaurants in given cuisine" do
-    expect(@results[:businesses]).to be_a(Array)
-  end
+
 end
