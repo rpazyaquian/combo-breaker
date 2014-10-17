@@ -57,3 +57,5 @@ gem 'dotenv-rails'
 gem 'yelp'
 gem 'devise'
 gem 'rails_12factor'
+
+gem 'foundation-rails'

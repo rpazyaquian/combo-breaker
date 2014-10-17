@@ -84,6 +84,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
+    foundation-rails (5.4.5.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -237,6 +240,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
+  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails (~> 4.0.0.beta2)
   pg
