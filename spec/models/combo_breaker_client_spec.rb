@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ComboBreakerClient, :type => :model do
 
-  before(:each) do
+  before(:all) do
     @combo_breaker_client = ComboBreakerClient.new
     @location = 'Coolidge Corner, Brookline, MA'
     @cuisine = :italian
