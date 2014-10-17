@@ -8,12 +8,12 @@
 
 <%= form_tag do %>
   <%= label_tag(:location, 'What\'s your location?') %>
-  <%= text_field_tag %>
+  <%= text_field_tag(:location) %>
   <%= label_tag(:cuisine, 'What did you have last?') %>
-  <%= text_field_tag %>
+  <%= text_field_tag(:cuisine) %>
 <% end %>
 
-<p>How about some <%= @category %>?</p>
+<p>How about some <%= @cuisine %>?</p>
 
 <ul>
   <% @businesses.collect do |business| %>

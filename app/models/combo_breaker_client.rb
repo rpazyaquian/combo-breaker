@@ -38,7 +38,7 @@ class ComboBreakerClient
       :mexican,
       :chinese,
       :japanese,
-      :indian,
+      :indpak,
       :pizza,
       :burgers
     ]
@@ -46,11 +46,13 @@ class ComboBreakerClient
 
   def cuisine_filter(cuisine)
     # remove cuisine from cuisines and get a random one
-    cuisines = self.cuisines.map do |possible_cuisine|
+    cuisines = []
+    self.cuisines.each do |possible_cuisine|
       unless possible_cuisine == cuisine
-        possible_cuisine
+        cuisines << possible_cuisine
       end
     end
+    puts cuisines
     cuisines.sample
   end
 
