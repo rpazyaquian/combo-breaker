@@ -1,6 +1,6 @@
 require 'yelp'
 
-class ComboBreaker
+class ComboBreakerClient
 
   def initialize
     @client = Yelp::Client.new({
@@ -46,7 +46,12 @@ class ComboBreaker
 
   def cuisine_filter(cuisine)
     # remove cuisine from cuisines and get a random one
-    self.cuisines.delete(cuisine).sample
+    cuisines = self.cuisines.map do |possible_cuisine|
+      unless possible_cuisine == cuisine
+        possible_cuisine
+      end
+    end
+    cuisines.sample
   end
 
   def get_results(location, cuisine)
@@ -70,7 +75,7 @@ class ComboBreaker
 end
 
 # example usage (for now):
-# combo_breaker = ComboBreaker.new
+# combo_breaker = ComboBreakerClient.new
 # combo_breaker.search({
 #   location: 'Coolidge Corner, Brookline, MA',
 #   last_cuisine: :italian
