@@ -1,15 +1,17 @@
-<h1>Hi!</h1>
-
 <p>If you've ever felt like you can't decide what to eat for your next meal, this application will suggest a cuisine (and food-place from Yelp) that you haven't had recently. Helps you break out of a routine! It looks kinda like this:</p>
 
 <hr>
 
-<p>How about some <%= @cuisine %>?</p>
+<p>Tonight, you are having:</p>
+
+<h2><%= @cuisine[0] %></h2>
+
+<p>Be thankful.</p>
 
 <ul>
-  <% @businesses.collect do |business| %>
-    <li><%= business.name %></li>
-  <% end %>
+<% @businesses.each do |business| %>
+  <li><%= business.name %></li>
+<% end %>
 </ul>
 
 <hr>

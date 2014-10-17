@@ -36,3 +36,13 @@ User:
       - price
       - details
         - allergy info?
+
+# notes
+
+foursquare
+
+yelp api
+
+when they checked in
+
+decide dinner for a group

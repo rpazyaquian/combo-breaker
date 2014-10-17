@@ -16,11 +16,11 @@ class ComboBreakerClient
   def search(params)
     results = @client.search(params[:location], { term: 'restaurant' })
     @businesses = results.businesses
-    @cuisines = results.businesses.map do |business|
-      categories = business.categories.map do |category|
-        category
+    @cuisines = []
+    results.businesses.each do |business|
+      business.categories.each do |category|
+        @cuisines << category unless @cuisines.include?(category)
       end
-      categories.flatten
     end
   end
 
