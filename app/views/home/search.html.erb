@@ -1,21 +1,16 @@
-<p>If you've ever felt like you can't decide what to eat for your next meal, this application will suggest a cuisine (and food-place from Yelp) that you haven't had recently. Helps you break out of a routine! It looks kinda like this:</p>
-
-<hr>
-
 <p>Tonight, you are having:</p>
 
-<h2><%= @cuisine[0] %></h2>
+<h2 class='cuisine'><%= @cuisine[0] %></h2>
 
 <p>Be thankful.</p>
 
-<ul>
-<% @businesses.each do |business| %>
-  <li><%= business.name %></li>
-<% end %>
+<p>Here's some related restaurants in your area:</p>
+
+<ul class='restaurant-list'>
+  <% @businesses.each do |business| %>
+    <li class='restaurant-listing'>
+      <%= image_tag business.image_url, class: 'restaurant-image' %>
+      <%= link_to business.name, business.url %>
+    </li>
+  <% end %>
 </ul>
-
-<hr>
-
-<p>In the future, I hope to expand this to determine the cuisine you like the most, the cuisine you like the least, and suggest dissimilar restaurants from your norm to help you get out of your culinary rut. That'll take a little bit of reading up on machine learning, but hey, it's a wishlist...</p>
-
-<p>PS: Is there a way to programmatically get the list of Restaurants categories from Yelp? e.g. 'restaurant,armenian', etc.</p>
