@@ -1,10 +1,14 @@
 class HomeController < ApplicationController
   def index
+    results = combo_breaker('Coolidge Corner, Brookline, MA')
+    @businesses = results[:businesses]
+    @category = results[:category]
   end
 
   private
 
-    def combo_breaker
+    def combo_breaker(location)
+      # maybe make this its own class?
       require 'yelp'
 
       client = Yelp::Client.new({
@@ -16,11 +20,15 @@ class HomeController < ApplicationController
 
       cuisines = [:italian, :mexican, :chinese, :japanese, :indian, :pizza, :burgers]
 
-      params = { term: 'food', category_filter: cuisines.sample.to_s }
+      category = cuisines.sample.to_s
 
-      location = 'Coolidge Corner, Brookline, MA'
+      params = { term: 'food', category_filter: category }
 
-      results = client.search(location, params)
+      results = {
+        businesses: client.search(location, params).businesses,
+        category: category.capitalize
+      }
+
     end
 
 end
