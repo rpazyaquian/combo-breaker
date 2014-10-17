@@ -46,6 +46,21 @@ class ComboBreakerClient
     }
   end
 
+  def cuisine_options
+    options = {
+      italian: 'Italian',
+      mexican: 'Mexican',
+      chinese: 'Chinese',
+      japanese: 'Japanese',
+      indpak: 'Indian',
+      pizza: 'Pizza',
+      burgers: 'Burgers'
+    }
+    options.to_a.map do |option|
+      option.reverse
+    end
+  end
+
   def translate_cuisine(cuisine)
     translations = {
       italian: 'Italian',
