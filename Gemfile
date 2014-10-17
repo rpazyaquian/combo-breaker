@@ -57,3 +57,6 @@ gem 'dotenv-rails'
 gem 'yelp'
 gem 'devise'
 gem 'rails_12factor'
+
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
