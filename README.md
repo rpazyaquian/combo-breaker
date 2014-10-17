@@ -4,12 +4,12 @@ An application for breaking you out of your culinary routine.
 
 # Story
 
-As someone who is adventurous with respect to food
-But has no idea what to eat around the area
-And wants to have something new (instead of pizza for the past 3 nights)
-I want an app to recommend me a food cuisine type
-That is new to me
-Or I have not had recently
+- As someone who is adventurous with respect to food
+- But has no idea what to eat around the area
+- And wants to have something new (instead of pizza for the past 3 nights)
+- I want an app to recommend me a food cuisine type
+- That is new to me
+- Or I have not had recently
 
 # User Stories
 
