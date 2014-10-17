@@ -44,6 +44,11 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'rails_best_practices'
+end
+
 gem 'dotenv-rails'
 gem 'yelp'
 gem 'devise'
+gem 'rails_12factor'

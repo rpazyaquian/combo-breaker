@@ -37,6 +37,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (6.0.0.beta1)
+    awesome_print (1.2.0)
     bcrypt (3.1.7)
     binding_of_caller (0.7.3.pre1)
       debug_inspector (>= 0.0.1)
@@ -45,6 +46,8 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    code_analyzer (0.4.5)
+      sexp_processor
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -53,6 +56,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colored (1.2)
     columnize (0.8.9)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -129,6 +133,21 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_best_practices (1.15.4)
+      activesupport
+      awesome_print
+      code_analyzer (>= 0.4.3)
+      colored
+      erubis
+      i18n
+      json
+      require_all
+      ruby-progressbar
+    rails_serve_static_assets (0.0.2)
+    rails_stdout_logging (0.0.3)
     railties (4.2.0.beta2)
       actionpack (= 4.2.0.beta2)
       activesupport (= 4.2.0.beta2)
@@ -137,8 +156,10 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    require_all (1.3.2)
     responders (2.0.0)
       railties (>= 4.2.0.alpha, < 5)
+    ruby-progressbar (1.6.0)
     sass (3.4.6)
     sass-rails (5.0.0.beta1)
       railties (>= 4.0.0, < 5.0)
@@ -148,6 +169,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sexp_processor (4.4.4)
     simple_oauth (0.2.0)
     slop (3.6.0)
     spring (1.1.3)
@@ -195,6 +217,8 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   rails (= 4.2.0.beta2)
+  rails_12factor
+  rails_best_practices
   sass-rails (~> 5.0.0.beta1)
   sdoc (~> 0.4.0)
   spring
