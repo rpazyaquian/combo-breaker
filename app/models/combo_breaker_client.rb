@@ -59,8 +59,22 @@ class ComboBreakerClient
   def get_results(location, cuisine)
     {
       businesses: get_businesses(location, query_params(cuisine)),
-      cuisine: cuisine.to_s.capitalize
+      cuisine: translate_cuisine(cuisine)
     }
+  end
+
+  def translate_cuisine(cuisine)
+    translations = {
+      italian: 'Italian',
+      mexican: 'Mexican',
+      chinese: 'Chinese',
+      japanese: 'Japanese',
+      indpak: 'Indian',
+      pizza: 'Pizza',
+      burgers: 'Burgers'
+    }
+
+    translations[cuisine]
   end
 
   def query_params(cuisine)

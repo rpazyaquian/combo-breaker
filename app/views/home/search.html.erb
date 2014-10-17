@@ -1,0 +1,7 @@
+<p>How about some <%= @cuisine %>?</p>
+
+<ul>
+  <% @businesses.collect do |business| %>
+    <li><%= business.name %></li>
+  <% end %>
+</ul>

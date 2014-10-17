@@ -6,20 +6,14 @@
 
 <hr>
 
-<%= form_tag do %>
+<%= form_tag('/search', method: "post") do %>
   <%= label_tag(:location, 'What\'s your location?') %>
   <%= text_field_tag(:location) %>
   <%= label_tag(:cuisine, 'What did you have last?') %>
   <%= text_field_tag(:cuisine) %>
+
+  <%= submit_tag %>
 <% end %>
-
-<p>How about some <%= @cuisine %>?</p>
-
-<ul>
-  <% @businesses.collect do |business| %>
-    <li><%= business.name %></li>
-  <% end %>
-</ul>
 
 <hr>
 
