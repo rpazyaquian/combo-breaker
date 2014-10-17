@@ -56,7 +56,10 @@ end
 gem 'dotenv-rails'
 gem 'yelp'
 gem 'devise'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
