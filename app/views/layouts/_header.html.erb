@@ -1,13 +1,17 @@
 <header>
   <nav class='header-nav'>
 
-    <button class="btn btn-default"><%= link_to "Home", root_path %></button>
+    <ul class='list-inline'>
 
-    <% if signed_in? %>
-      <p>Welcome, <%= current_user.name %></p>
-    <% end %>
+      <% if signed_in? %>
+        <li>
+          <p>Welcome, <%= current_user.name %></p>
+        </li>
+      <% end %>
 
-    <ul class='user-links'>
+      <li>
+        <%= link_to "Home", root_path %>
+      </li>
 
       <% if signed_in? %>
 
