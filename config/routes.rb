@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/create'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
   resources :users, except: [:index, :show]
   root 'home#index'
 
