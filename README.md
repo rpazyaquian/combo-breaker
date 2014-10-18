@@ -52,3 +52,60 @@ yelp api
 when they checked in
 
 decide dinner for a group
+
+# User Authentication and Authorization
+
+Devise is a jerk, and doesn't seem to want to work for me. I've tried several times to implement it, and I figure that at this point, I may as well learn how to roll my own. I've done simple user authentication before, although I haven't done much authorization at all. In any case, I will have to plan out how I want my auth to work.
+
+User:
+
+  - has an email
+  - has a username
+  - has a password hash
+  - is not logged in ->
+    - sees links to sign in and to sign up
+    - does not have an account ->
+      - clicks sign up
+      - is directed to the sign up page
+      - sees form with fields:
+        * username
+        * email
+        * password
+        * password_confirmation
+    - has an account ->
+      - clicks sign in
+      - is directed to the sign in page
+      - sees form with fields:
+        * email
+        * password
+    - Rails session records their user ID
+  - is logged in ->
+    - sees links to log out and edit registration
+    - logs out ->
+      - Rails session forgets their user ID
+      - no longer sees log out and edit reg links
+      - sees links to sign in and to sign up
+    - edits registration ->
+      - is directed to edit profile page
+      - sees form with fields:
+        * username
+        * email
+        * password
+        * password_confirmation
+
+Alright, so my *User migration* will look something like this:
+
+- User (database)
+  - email:string, must be unique
+  - username:string, a.k.a. display name
+  - password_digest:string, hash of input password
+
+While my *User model* will look like this:
+
+- User (model)
+  - email:string, must be unique
+  - username:string, a.k.a display name
+  - password:string, obvious
+  - password_confirmation:string, to make sure the user puts their password in correctly!
+
+I know that ideally, I'd implement salting and hashing myself via bcrypt, but I kind of don't want to compromise *too* much when it comes to security. I'll use Rails' built-in `has_secure_password` function.
