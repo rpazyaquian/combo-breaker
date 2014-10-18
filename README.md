@@ -108,7 +108,7 @@ While my *User model* will look like this:
   - password:string, obvious
   - password_confirmation:string, to make sure the user puts their password in correctly!
 
-I know that ideally, I'd implement salting and hashing myself via bcrypt, but I kind of don't want to compromise *too* much when it comes to security. I'll use Rails' built-in `has_secure_password` function.
+I know that "ideally", I'd implement salting and hashing myself via bcrypt, but I kind of don't want to compromise *too* much when it comes to security. I'll use Rails' built-in `has_secure_password` function.
 
 # Sessions
 
