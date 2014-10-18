@@ -1,12 +1,21 @@
 <h1>C-C-C-Combo Breaker!</h1>
 
 <%= form_tag('/search', method: "post") do %>
-  <%= label_tag(:location, 'What\'s your location?') %>
-  <%= text_field_tag(:location) %>
-  <%= label_tag(:cuisine, 'What did you have last?') %>
-  <%= select_tag(:cuisine, options_for_select(@cuisine_options)) %>
-  <%= label_tag(:radius_filter, 'Search radius in meters:') %>
-  <%= number_field_tag(:radius_filter, 10000, in: 1..40000, step: 1) %>
+
+  <div class='form-group'>
+    <%= label_tag(:location, 'What\'s your location?') %>
+    <%= text_field_tag(:location, nil, class: 'form-control' )%>
+  </div>
+
+  <div class='form-group'>
+    <%= label_tag(:cuisine, 'What did you have last?') %>
+    <%= select_tag(:cuisine, options_for_select(@cuisine_options), class: 'form-control' )%>
+  </div>
+
+  <div class='form-group'>
+    <%= label_tag(:radius_filter, 'Search radius in meters:') %>
+    <%= number_field_tag(:radius_filter, 10000, in: 1..40000, step: 1, class: 'form-control' )%>
+  </div>
 
   <%= submit_tag "I'm hungry!" %>
 <% end %>

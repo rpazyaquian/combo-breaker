@@ -1,8 +1,10 @@
 <header>
   <nav class='header-nav'>
 
+    <button class="btn btn-default"><%= link_to "Home", root_path %></button>
+
     <% if signed_in? %>
-      <p>Currently logged in: <%= current_user.name %></p>
+      <p>Welcome, <%= current_user.name %></p>
     <% end %>
 
     <ul class='user-links'>
