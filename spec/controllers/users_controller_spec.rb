@@ -2,39 +2,23 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
+  before(:each) do
+    @user = FactoryGirl.build(:user)
   end
 
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
+  describe "#create" do
   end
 
-  describe "GET edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
+  describe "#new" do
   end
 
-  describe "GET update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
+  describe "#edit" do
   end
 
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
+  describe "#update" do
+  end
+
+  describe "#destroy" do
   end
 
 end
