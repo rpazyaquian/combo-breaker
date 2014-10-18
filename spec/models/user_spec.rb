@@ -9,4 +9,12 @@ RSpec.describe User, :type => :model do
     user = FactoryGirl.build(:user, password_confirmation: 'thisisdefinitelynotamatchingpasswordright')
     expect(user).not_to be_valid
   end
+  it "is invalid when email is not supplied" do
+    user = FactoryGirl.build(:user, email: '')
+    expect(user).not_to be_valid
+  end
+  it "is invalid when user name is not supplied" do
+    user = FactoryGirl.build(:user, name: '')
+    expect(user).not_to be_valid
+  end
 end
