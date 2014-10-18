@@ -6,8 +6,6 @@ If you've ever felt like you can't decide what to eat for your next meal, this a
 
 In the future, I hope to expand this to determine the cuisine you like the most, the cuisine you like the least, and suggest dissimilar restaurants from your norm to help you get out of your culinary rut. That'll take a little bit of reading up on machine learning, but hey, it's a wishlist...
 
-PS: Is there a way to programmatically get the list of Restaurants categories from Yelp? e.g. 'restaurant,armenian', etc.
-
 # Story
 
 - As someone who is adventurous with respect to food
