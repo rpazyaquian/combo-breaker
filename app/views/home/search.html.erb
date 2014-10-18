@@ -4,7 +4,11 @@
 
 <p>Be thankful.</p>
 
-<p>Here's some related restaurants in your area:</p>
+<p>
+  Also, here's some restaurants tagged
+  <span class='cuisine-inline'><%= @cuisine[0] %></span>
+  in your area:
+</p>
 
 <ul class='restaurant-list'>
   <% @businesses.each do |business| %>

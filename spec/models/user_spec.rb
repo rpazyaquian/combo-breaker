@@ -17,4 +17,8 @@ RSpec.describe User, :type => :model do
     user = FactoryGirl.build(:user, name: '')
     expect(user).not_to be_valid
   end
+  it "is valid with email, name, password, and password_confirmation" do
+    user = FactoryGirl.build(:user)
+    expect(user).to be_valid
+  end
 end
