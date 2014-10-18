@@ -10,12 +10,17 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = params[:id]
   end
 
   def update
+    @user = params[:id]
+    @user.update(user_params)
+    redirect_to root_path
   end
 
   def destroy
+    # nothin yet
   end
 
   private
