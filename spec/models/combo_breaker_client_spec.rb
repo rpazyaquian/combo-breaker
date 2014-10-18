@@ -22,6 +22,4 @@ RSpec.describe ComboBreakerClient, :type => :model do
     expect(@combo_breaker_client.cuisines.first.first).to be_a(String)
   end
 
-  # i think i'll do the filtering somewhere else.
-
 end
