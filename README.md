@@ -117,3 +117,50 @@ I need to keep track of the user session.
 Rails keeps track of the session itself. Each client, when connected to a Rails application, gets a session hash in their cookies that contains important parameters.
 
 All I really need to do is set `session[:id]` to the user's ID when the user is created, or when the user signs in. I also need to destroy it when the user logs out or when the user is destroyed.
+
+You'll be making a `SessionsController`.
+
+That controller must have these methods:
+
+- `#new`
+- `#create`
+- `#destroy`
+
+`#new` will simply display the sign in page, including a form with email/password fields.
+
+`#create` will take the parameters of that submitted form, look up a user with the specified `:email`, and if that user exists *and* that user's password matches the specified `:password` (hint: use `user.authenticate(session_params[:password])`), set `session[:user_id]` to the verified user's id. Else, kick the client back to the sign in page with an error.
+
+`#destroy` will simply set the `session[:user_id]` to `nil`.
+
+My controller ended up looking something like this:
+
+    class SessionsController < ApplicationController
+      def new
+        # show the sign in page
+      end
+
+      def create
+        # thx to michael hartl for the review on how to do this
+        user = User.find_by(email: session_params[:email].downcase)
+        if user && user.authenticate(session_params[:password])
+          session[:user_id] = user.id
+          binding.pry
+          redirect_to root_path
+        else
+          # (think of errors to pass!)
+          render 'new'
+        end
+      end
+
+      def destroy
+        session[:user_id] = nil
+        redirect_to root_path
+      end
+
+      private
+
+        def session_params
+          params.require(:session).permit(:email, :password)
+        end
+
+    end
