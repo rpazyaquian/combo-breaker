@@ -109,3 +109,11 @@ While my *User model* will look like this:
   - password_confirmation:string, to make sure the user puts their password in correctly!
 
 I know that ideally, I'd implement salting and hashing myself via bcrypt, but I kind of don't want to compromise *too* much when it comes to security. I'll use Rails' built-in `has_secure_password` function.
+
+# Sessions
+
+I need to keep track of the user session.
+
+Rails keeps track of the session itself. Each client, when connected to a Rails application, gets a session hash in their cookies that contains important parameters.
+
+All I really need to do is set `session[:id]` to the user's ID when the user is created, or when the user signs in. I also need to destroy it when the user logs out or when the user is destroyed.
