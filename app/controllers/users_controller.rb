@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = params[:id]
+    @user = current_user
   end
 
   def update

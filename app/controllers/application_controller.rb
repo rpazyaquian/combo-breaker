@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id])
   end
 
+  def signed_in?
+    User.exists?(session[:user_id])
+  end
+
   helper_method :current_user
 
 end
