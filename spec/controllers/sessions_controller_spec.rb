@@ -2,24 +2,23 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, :type => :controller do
 
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+  describe "#new" do
+  end
+
+  describe "#create" do
+    context 'with valid information' do
+      it "sets session user id to user's id" do
+        user = FactoryGirl.create(:user)
+        post :create, session: {
+          email: user.email, password: user.password
+        }
+        expect(User.find(session[:user_id])).to eq user
+      end
     end
   end
 
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+  describe "#destroy" do
+    it "sets the session's user id to nil" do
     end
   end
 

@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
     # if the user exists AND
     # the user's authenticated when given the password
     if user && user.authenticate(session_params[:password])
-      login_user(user)
+      session[:user_id] = user.id
+      redirect_to root_path
     else
       # no match, display the sign in page again
       # (think of errors to pass!)
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
   def destroy
     # set the sessions :user_id parameter to nil
     # and redirect to root
-    logout_user(current_user)
+    session[:user_id] = nil
     redirect_to root_path
   end
 
@@ -35,10 +36,4 @@ class SessionsController < ApplicationController
       params.require(:session).permit(:email, :password)
     end
 
-    def login_user(user)
-      session[:user_id] = user.id
-    end
-
-    def logout_user(user)
-    end
 end
