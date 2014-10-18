@@ -4,9 +4,11 @@ RSpec.describe ComboBreakerClient, :type => :model do
 
   before(:all) do
     @combo_breaker_client = ComboBreakerClient.new
-    @params = {
-      location: 'Coolidge Corner, Brookline, MA'
-    }
+    @params =       {
+        location: 'Coolidge Corner, Brookline, MA',
+        cuisine: :chinese,
+        radius_filter: 10000
+      }
     @combo_breaker_client.search(@params)
   end
 
