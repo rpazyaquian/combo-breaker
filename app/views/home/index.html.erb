@@ -1,21 +1,32 @@
 <h1>C-C-C-Combo Breaker!</h1>
 
-<%= form_tag('/search', method: "post") do %>
+<%= form_tag('/search', { method: "post", class: 'form-horizontal'}) do %>
 
   <div class='form-group'>
-    <%= label_tag(:location, 'What\'s your location?') %>
-    <%= text_field_tag(:location, nil, class: 'form-control' )%>
+    <%= label_tag(:location, 'What\'s your location?', class: 'col-sm-2 control-label') %>
+    <div class="col-sm-10">
+      <%= text_field_tag(:location, nil, class: 'form-control' )%>
+    </div>
   </div>
 
   <div class='form-group'>
-    <%= label_tag(:cuisine, 'What did you have last?') %>
-    <%= select_tag(:cuisine, options_for_select(@cuisine_options), class: 'form-control' )%>
+    <%= label_tag(:cuisine, 'What did you have last?', class: 'col-sm-2 control-label') %>
+    <div class="col-sm-10">
+      <%= select_tag(:cuisine, options_for_select(@cuisine_options), class: 'form-control' )%>
+    </div>
   </div>
 
   <div class='form-group'>
-    <%= label_tag(:radius, 'Search radius') %>
-    <%= number_field_tag(:radius_distance, 10000, in: 1..40000, step: 1, class: 'form-control' )%>
-    <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-control' )%>
+    <%= label_tag(:radius, 'Search radius', class: 'col-sm-2 control-label') %>
+
+    <div class="col-sm-6">
+      <div class='col-sm-6'>
+        <%= number_field_tag(:radius_distance, 2, in: 1..100, step: 1, class: 'form-control' )%>
+      </div>
+      <div class='col-sm-6'>
+        <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-control' )%>
+      </div>
+    </div>
   </div>
 
 
