@@ -3,30 +3,20 @@ class HomeController < ApplicationController
     # don't you dare say anything
     @cuisine_options = [
       ["Italian", "italian"],
-      ["Breakfast & Brunch", "breakfast_brunch"],
-      ["Delis", "delis"],
       ["Burgers", "burgers"],
       ["Mexican", "mexican"],
-      ["Gluten-Free", "gluten_free"],
       ["Middle Eastern", "mideastern"],
-      ["Kosher", "kosher"],
       ["Sushi Bars", "sushi"],
       ["Japanese", "japanese"],
-      ["Bars", "bars"],
       ["American (New)", "newamerican"],
       ["Sandwiches", "sandwiches"],
       ["Bagels", "bagels"],
       ["Thai", "thai"],
       ["Indian", "indpak"],
-      ["Vegetarian", "vegetarian"],
-      ["Vegan", "vegan"],
       ["Vietnamese", "vietnamese"],
-      ["Sports Bars", "sportsbars"],
       ["American (Traditional)", "tradamerican"],
-      ["Specialty Food", "gourmet"],
       ["Seafood", "seafood"],
       ["Korean", "korean"],
-      ["Cafes", "cafes"],
       ["Creperies", "creperies"],
       ["Pizza", "pizza"]
     ]
@@ -37,13 +27,77 @@ class HomeController < ApplicationController
   end
 
   def search
-    results = search(search_params)
-    @businesses = results
+    results = search_api(search_params)
+    filtered_results = filter_results(results, last_cuisine)
+    @businesses = filtered_results[:businesses]
+    @cuisine = filtered_results[:cuisine]
   end
 
   private
 
-    def search(params)
+    def filter_results(results, cuisine)
+      #
+      # businesses = results.map do |business|
+      #   {business: business, categories: business.categories}
+      # end
+
+      # build a list of all the businesses in area
+      # build a list of all categories of all businesses
+      # choose a random category from the list of categories
+        # `chosen_cuisine`
+      # choose all businesses that are tagged with category
+        # filtered_businesses
+
+      businesses = process_results(results)[:businesses]
+      cuisines = process_results(results)[:cuisines]
+
+      cuisines.delete(cuisine)
+
+      chosen_cuisine = cuisines.sample
+
+      filtered_businesses = filter_businesses(businesses, chosen_cuisine)
+
+      {
+        businesses: filtered_businesses,
+        cuisine: chosen_cuisine[0]
+      }
+    end
+
+    def filter_businesses(businesses, cuisine)
+      businesses.select do |business|
+        business.categories.include?(cuisine)
+      end
+    end
+
+    def process_results(results)
+
+      mapped_results =  results.map do |business|
+        { business: business, categories: business.categories }
+      end
+
+      businesses = mapped_results.map do |business|
+        business[:business]
+      end
+
+      # since it's a set, there will be no repeats
+      cuisines = Set.new
+
+      mapped_results.each do |business|
+        # okay, I have a big old hash
+        # i want to iterate through the hash
+        # and add all the results to an array
+        business[:categories].each do |cuisine|
+          cuisines << cuisine
+        end
+      end
+
+      {
+        businesses: businesses,
+        cuisines: cuisines.to_a
+      }
+    end
+
+    def search_api(params)
       combo_breaker_client = ComboBreakerClient.new
       combo_breaker_client.search(params)
     end
@@ -57,14 +111,6 @@ class HomeController < ApplicationController
 
     def last_cuisine
       params[:cuisine].to_sym
-    end
-
-    def choose_cuisine(businesses, cuisines)
-      cuisine = cuisines.sample
-      filtered_businesses = businesses.find_all { |business|
-        business.categories.include?(cuisine)
-      }
-      [filtered_businesses, cuisine]
     end
 
     def meters(distance, units)
