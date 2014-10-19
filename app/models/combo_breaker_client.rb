@@ -22,22 +22,8 @@ class ComboBreakerClient
     rescue Yelp::Error::UnavailableForLocation => e
       raise LocationNotFound, "Location not found in Yelp API."
     end
-    @reject_cuisine = params[:cuisine]
-    @businesses = results.businesses
-    @cuisines = []
-    results.businesses.each do |business|
-      business.categories.each do |category|
-        @cuisines << category unless (@cuisines.include?(category) || category == @reject_cuisine)
-      end
-    end
+    results.businesses
   end
 
-  def cuisines
-    @cuisines
-  end
-
-  def businesses
-    @businesses
-  end
 
 end
