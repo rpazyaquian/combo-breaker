@@ -38,12 +38,9 @@ class HomeController < ApplicationController
 
   def search
     combo_breaker_client = ComboBreakerClient.new
-    begin
-      combo_breaker_client.search(search_params(params))
-      @businesses, @cuisine = choose_cuisine(combo_breaker_client.businesses, combo_breaker_client.cuisines)
-    rescue ComboBreakerClient::LocationNotFound => e
-      redirect_to root_path, :flash => { :error => e.message }
-    end
+    @radius = search_params[:radius]
+    combo_breaker_client.search(search_params)
+    @businesses, @cuisine = choose_cuisine(combo_breaker_client.businesses, combo_breaker_client.cuisines)
   end
 
   private
@@ -52,7 +49,7 @@ class HomeController < ApplicationController
       {
         location: params[:location],
         cuisine: params[:cuisine].to_sym,
-        radius_filter: params[:radius_filter]
+        radius: meters(params[:radius_distance], params[:radius_units].to_sym)
       }
     end
 
@@ -63,4 +60,9 @@ class HomeController < ApplicationController
       }
       [filtered_businesses, cuisine]
     end
+
+    def meters(distance, units)
+      Unit("#{distance} #{units}").convert_to('m').scalar
+    end
+
 end
