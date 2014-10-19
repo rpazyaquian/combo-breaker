@@ -37,20 +37,26 @@ class HomeController < ApplicationController
   end
 
   def search
-    combo_breaker_client = ComboBreakerClient.new
-    @radius = search_params[:radius]
-    combo_breaker_client.search(search_params)
-    @businesses, @cuisine = choose_cuisine(combo_breaker_client.businesses, combo_breaker_client.cuisines)
+    results = search(search_params)
+    @businesses = results
   end
 
   private
 
-    def search_params(params)
+    def search(params)
+      combo_breaker_client = ComboBreakerClient.new
+      combo_breaker_client.search(params)
+    end
+
+    def search_params
       {
         location: params[:location],
-        cuisine: params[:cuisine].to_sym,
         radius: meters(params[:radius_distance], params[:radius_units].to_sym)
       }
+    end
+
+    def last_cuisine
+      params[:cuisine].to_sym
     end
 
     def choose_cuisine(businesses, cuisines)
