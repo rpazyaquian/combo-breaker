@@ -21,7 +21,7 @@
 
     <div class="col-sm-6">
       <div class='col-sm-6'>
-        <%= number_field_tag(:radius_distance, 2, in: 1..100, step: 1, class: 'form-control' )%>
+        <%= number_field_tag(:radius_distance, 2, in: 1..4, step: 1, class: 'form-control' )%>
       </div>
       <div class='col-sm-6'>
         <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-control' )%>

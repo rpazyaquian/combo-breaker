@@ -35,18 +35,9 @@ class HomeController < ApplicationController
 
   private
 
-    def filter_results(results, cuisine)
-      #
-      # businesses = results.map do |business|
-      #   {business: business, categories: business.categories}
-      # end
+  # TODO: move search-specific methods to own module
 
-      # build a list of all the businesses in area
-      # build a list of all categories of all businesses
-      # choose a random category from the list of categories
-        # `chosen_cuisine`
-      # choose all businesses that are tagged with category
-        # filtered_businesses
+    def filter_results(results, cuisine)
 
       businesses = process_results(results)[:businesses]
       cuisines = process_results(results)[:cuisines]
@@ -83,9 +74,6 @@ class HomeController < ApplicationController
       cuisines = Set.new
 
       mapped_results.each do |business|
-        # okay, I have a big old hash
-        # i want to iterate through the hash
-        # and add all the results to an array
         business[:categories].each do |cuisine|
           cuisines << cuisine
         end
