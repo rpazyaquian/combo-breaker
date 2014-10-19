@@ -30,6 +30,10 @@ class HomeController < ApplicationController
       ["Creperies", "creperies"],
       ["Pizza", "pizza"]
     ]
+    @distance_units = [
+      :km,
+      :mi
+    ]
   end
 
   def search

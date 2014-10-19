@@ -13,9 +13,11 @@
   </div>
 
   <div class='form-group'>
-    <%= label_tag(:radius_filter, 'Search radius in meters:') %>
-    <%= number_field_tag(:radius_filter, 10000, in: 1..40000, step: 1, class: 'form-control' )%>
+    <%= label_tag(:radius, 'Search radius') %>
+    <%= number_field_tag(:radius_distance, 10000, in: 1..40000, step: 1, class: 'form-control' )%>
+    <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-control' )%>
   </div>
+
 
   <%= submit_tag "I'm hungry!", class: 'btn btn-default' %>
 <% end %>
