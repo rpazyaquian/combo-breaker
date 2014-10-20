@@ -13,4 +13,21 @@ RSpec.describe Category, :type => :model do
     category = FactoryGirl.build(:category, search_value: "")
     expect(category).not_to be_valid
   end
+  it "belongs to many locations" do
+    category = FactoryGirl.create(:category)
+    location1 = FactoryGirl.create(:location)
+    location2 = FactoryGirl.create(:location)
+
+    [location1, location2].each do |location|
+      location << category
+    end
+
+    expect(category.locations.count).to eq 2
+  end
+  it "must have a unique search value" do
+    category1 = FactoryGirl.create(:category, search_value: 'unique')
+    category2 = FactoryGirl.build(:category, search_value: 'unique')
+
+    expect(category2).not_to be_valid
+  end
 end
