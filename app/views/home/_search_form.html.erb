@@ -1,0 +1,32 @@
+<%= form_tag('/search', { method: "post", class: 'search-form', role: 'form'}) do %>
+
+  <div class='location-form'>
+    <%= label_tag(:location, 'What\'s your location?', class: 'form-label') %>
+    <div class="form-field">
+      <%= text_field_tag(:location, nil, class: 'form-text' )%>
+    </div>
+  </div>
+
+  <div class='cuisine-form'>
+    <%= label_tag(:cuisine, 'What did you have last?', class: 'form-label') %>
+    <div class="form-field">
+      <%= select_tag(:cuisine, options_for_select(@cuisine_options), class: 'form-select' )%>
+    </div>
+  </div>
+
+  <div class='radius-form'>
+    <%= label_tag(:radius, 'Search radius', class: 'form-label') %>
+
+    <div class="form-field">
+      <div class='inner-form-field'>
+        <%= number_field_tag(:radius_distance, 2, in: 1..4, step: 1, class: 'form-number' )%>
+      </div>
+      <div class='inner-form-field'>
+        <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-select' )%>
+      </div>
+    </div>
+  </div>
+
+  <%= submit_tag "I'm hungry!", class: 'search-button' %>
+
+<% end %>

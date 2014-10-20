@@ -1,24 +1,26 @@
-<p>Tonight, you are having:</p>
+<section class='search-results'>
+  <p>Tonight, you are having:</p>
 
-<h2 class='cuisine'><%= @cuisine %></h2>
+  <h2 class='cuisine'><%= @cuisine %></h2>
 
-<p>Be thankful.</p>
+  <p>Be thankful.</p>
 
-<p>
-  Also, here's some restaurants tagged
-  <span class='cuisine-inline'><%= @cuisine %></span>
-  in your area:
-</p>
+  <p>
+    Also, here are some restaurants tagged
+    <span class='cuisine-inline'><%= @cuisine %></span>
+    in your area:
+  </p>
 
-<ul class='restaurant-list'>
-  <% @businesses.each do |business| %>
-    <li class='restaurant-listing'>
-      <% if business.respond_to?(:image_url) %>
-        <%= image_tag business.image_url, class: 'restaurant-image' %>
-      <% else %>
-        <%= image_tag 'http://placehold.it/100x100', class: 'placeholder-image' %>
-      <% end %>
-      <%= link_to business.name, business.url %>
-    </li>
-  <% end %>
-</ul>
+  <ul class='restaurant-list'>
+    <% @businesses.each do |business| %>
+      <li class='restaurant-listing'>
+        <% if business.respond_to?(:image_url) %>
+          <%= image_tag business.image_url, class: 'restaurant-image' %>
+        <% else %>
+          <%= image_tag 'http://placehold.it/100x100', class: 'placeholder-image' %>
+        <% end %>
+        <%= link_to business.name, business.url, class: 'restaurant-link' %>
+      </li>
+    <% end %>
+  </ul>
+</section>

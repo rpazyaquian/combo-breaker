@@ -16,3 +16,49 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// App-wide styles
+
+.application-container {
+  @extend .container;
+}
+
+// Header styles
+
+.header {
+  @extend .row;
+}
+
+.topbar {
+  @extend .navbar;
+  @extend .navbar-default;
+}
+
+.topbar-links {
+  @extend .nav;
+  @extend .navbar-nav;
+}
+
+.welcome-text {
+  @extend .navbar-text;
+}
+
+.home-link,
+.signout-link,
+.edit-profile-link,
+.register-link,
+.signin-link {
+
+}
+
+// Content styles
+
+.content {
+  @extend .row;
+}
+
+// Footer styles
+
+.footer {
+  @extend .row;
+}

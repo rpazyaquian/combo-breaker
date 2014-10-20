@@ -8,14 +8,21 @@
 </head>
 <body>
 
-<div class="container">
+<div class="application-container">
   <%= render 'layouts/header' %>
+
   <hr>
+
   <% unless flash[:error].nil? %>
     <%= flash[:error] %>
   <% end %>
-  <%= yield %>
+
+  <div class='content'>
+    <%= yield %>
+  </div>
+
   <hr>
+
   <%= render 'layouts/footer' %>
 </div>
 

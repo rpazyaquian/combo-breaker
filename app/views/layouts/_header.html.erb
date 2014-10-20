@@ -1,38 +1,39 @@
-<header>
-  <nav class='header-nav'>
+<header class='header'>
+  <nav class='topbar' role='navigation'>
 
-    <ul class='list-inline'>
+    <ul class='topbar-links'>
 
       <% if signed_in? %>
         <li>
-          <p>Welcome, <%= current_user.name %></p>
+          <p class='welcome-text'>Welcome, <%= current_user.name %></p>
         </li>
       <% end %>
 
       <li>
-        <%= link_to "Home", root_path %>
+        <%= link_to "Home", root_path, class: 'home-link' %>
       </li>
 
       <% if signed_in? %>
 
         <li>
-          <%= link_to "Sign out", sign_out_path %>
+          <%= link_to "Sign out", sign_out_path, class: 'signout-link' %>
         </li>
         <li>
-          <%= link_to "Edit profile", edit_profile_path %>
+          <%= link_to "Edit profile", edit_profile_path, class: 'edit-profile-link' %>
         </li>
 
       <% else %>
 
         <li>
-          <%= link_to "Register", new_user_path %>
+          <%= link_to "Register", new_user_path, class: 'register-link' %>
         </li>
         <li>
-          <%= link_to "Sign in", sign_in_path %>
+          <%= link_to "Sign in", sign_in_path, class: 'signin-link' %>
         </li>
 
       <% end %>
 
     </ul>
+
   </nav>
 </header>
