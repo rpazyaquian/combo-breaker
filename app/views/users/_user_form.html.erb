@@ -1,0 +1,23 @@
+<%= form_for @user do |f| %>
+  <div class="email-form">
+    <%= f.label :email, class: 'form-label' %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="name-form">
+    <%= f.label :name, class: 'form-label' %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="password-form">
+    <%= f.label :password, class: 'form-label' %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="password-confirmation-form">
+    <%= f.label :password_confirmation, class: 'form-label' %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Submit" %>
+<% end %>

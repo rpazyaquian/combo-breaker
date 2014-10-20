@@ -29,14 +29,21 @@
   @extend .row;
 }
 
+// Topbar styling
+
 .topbar {
   @extend .navbar;
   @extend .navbar-default;
 }
 
+.topbar-container {
+  @extend .container-fluid;
+}
+
 .topbar-links {
   @extend .nav;
   @extend .navbar-nav;
+  @extend .navbar-right;
 }
 
 .welcome-text {
@@ -61,4 +68,14 @@
 
 .footer {
   @extend .row;
+}
+
+// Form styling
+
+.form-label {
+  @extend .col-sm-3;
+}
+
+.form-field {
+  @extend .col-sm-9;
 }

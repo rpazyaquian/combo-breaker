@@ -1,39 +1,40 @@
 <header class='header'>
   <nav class='topbar' role='navigation'>
 
-    <ul class='topbar-links'>
+    <div class='topbar-container'>
 
       <% if signed_in? %>
-        <li>
-          <p class='welcome-text'>Welcome, <%= current_user.name %></p>
-        </li>
+        <p class='welcome-text'>Welcome, <%= current_user.name %></p>
       <% end %>
 
-      <li>
-        <%= link_to "Home", root_path, class: 'home-link' %>
-      </li>
-
-      <% if signed_in? %>
+      <ul class='topbar-links'>
 
         <li>
-          <%= link_to "Sign out", sign_out_path, class: 'signout-link' %>
-        </li>
-        <li>
-          <%= link_to "Edit profile", edit_profile_path, class: 'edit-profile-link' %>
+          <%= link_to "Home", root_path, class: 'home-link' %>
         </li>
 
-      <% else %>
+        <% if signed_in? %>
 
-        <li>
-          <%= link_to "Register", new_user_path, class: 'register-link' %>
-        </li>
-        <li>
-          <%= link_to "Sign in", sign_in_path, class: 'signin-link' %>
-        </li>
+          <li>
+            <%= link_to "Sign out", sign_out_path, class: 'signout-link' %>
+          </li>
+          <li>
+            <%= link_to "Edit profile", edit_profile_path, class: 'edit-profile-link' %>
+          </li>
 
-      <% end %>
+        <% else %>
 
-    </ul>
+          <li>
+            <%= link_to "Register", new_user_path, class: 'register-link' %>
+          </li>
+          <li>
+            <%= link_to "Sign in", sign_in_path, class: 'signin-link' %>
+          </li>
+
+        <% end %>
+
+      </ul>
+    </div>
 
   </nav>
 </header>
