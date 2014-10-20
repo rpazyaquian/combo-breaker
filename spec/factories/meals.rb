@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :meal do
-    cuisine "MyString"
+    cuisine { Faker::Commerce.color }
     user nil
   end
 end
