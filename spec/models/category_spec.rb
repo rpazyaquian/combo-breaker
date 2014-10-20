@@ -30,4 +30,15 @@ RSpec.describe Category, :type => :model do
 
     expect(category2).not_to be_valid
   end
+  it "outputs a list of all categories" do
+    category1 = FactoryGirl.create(:category)
+    category2 = FactoryGirl.create(:category)
+    expect(Category.all_categories).to include([
+        category1.display_name,
+        category1.search_value.to_sym
+      ],[
+        category2.display_name,
+        category2.search_value.to_sym
+      ])
+  end
 end
