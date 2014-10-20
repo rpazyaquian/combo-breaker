@@ -2,7 +2,11 @@
 
 FactoryGirl.define do
   factory :category do
-    display_name "MyString"
-    search_value "MyString"
+    display_name do
+      Faker::Commerce.product_name
+    end
+    search_value do
+      Faker::Commerce.color
+    end
   end
 end
