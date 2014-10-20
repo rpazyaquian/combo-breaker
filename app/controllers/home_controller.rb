@@ -41,8 +41,15 @@ class HomeController < ApplicationController
 
     def filter_cuisines(cuisines)
       cuisines.delete_if do |cuisine|
-        cuisine[1] == last_cuisine.to_s
+        blacklist(cuisine)
       end
+    end
+
+    def blacklist(cuisine)
+      blacklist = [
+        last_cuisine.to_s
+      ]
+      blacklist.include?(cuisine)
     end
 
     def search_api(params, cuisine = '')
