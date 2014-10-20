@@ -16,9 +16,9 @@ class ComboBreakerClient
     })
   end
 
-  def search(params)
+  def search(params, category='')
     begin
-      results = @client.search(params[:location], { term: 'restaurant', radius: params[:radius] })
+      results = @client.search(params[:location], { term: 'restaurant', radius: params[:radius], category_filter: category })
     rescue Yelp::Error::UnavailableForLocation => e
       raise LocationNotFound, "Location not found in Yelp API."
     end
