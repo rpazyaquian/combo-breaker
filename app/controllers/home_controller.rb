@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+
+  include HomeHelper
+
   def index
     @cuisine_options = Category.all_categories.sort_by { |category| category[0] }
     @distance_units = [
@@ -19,63 +22,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-  # TODO: move search-specific methods to own module
-
-    def get_categories(businesses)
-      categories = Set.new
-      businesses.each do |business|
-        business.categories.each do |category|
-
-          unless (blacklist_categories(category) || Category.all_categories.include?(category))
-            Category.create(
-              display_name: category[0],
-              search_value: category[1]
-              )
-          end
-
-          categories << category
-        end
-      end
-      categories
-    end
-
-    def blacklist_categories(category)
-      blacklist = [
-        ['Lounges', 'lounges'],
-        ['Bars', 'bars'],
-        ["Fruits & Veggies", 'markets'],
-        ["Salad", "salad"]
-        ["Bakeries", 'bakeries'],
-        ["Coffee & Tea", 'coffee'],
-        ["Food Stands", 'foodstands'],
-        ["Food Trucks", "foodtrucks"],
-        ["Fast Food", "hotdogs"],
-        ["Diners", "diners"],
-        ["Breakfast & Brunch", "breakfast_brunch"],
-        ["Jazz & Blues", "jazzandblues"],
-        ["Venues & Event Spaces", "venues"],
-        ["Steakhouses", "steak"]
-      ]
-    end
-
-    def filter_cuisines(cuisines)
-      cuisines.delete_if do |cuisine|
-        blacklist(cuisine)
-      end
-    end
-
-    def blacklist(cuisine)
-      blacklist = [
-        last_cuisine.to_s
-      ]
-      blacklist.include?(cuisine)
-    end
-
-    def search_api(params, cuisine = '')
-      combo_breaker_client = ComboBreakerClient.new
-      combo_breaker_client.search(params, cuisine)
-    end
 
     def search_params
       {
