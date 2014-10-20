@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     # don't you dare say anything
-    @cuisines = Category.all_categories
+    @cuisine_options = Category.all_categories
     @distance_units = [
       :km,
       :mi
