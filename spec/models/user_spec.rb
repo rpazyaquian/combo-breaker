@@ -30,4 +30,22 @@ RSpec.describe User, :type => :model do
     user = FactoryGirl.create(:user)
     expect(user).to be_valid
   end
+
+  describe "meal history" do
+    it "takes a maximum of ten meals" do
+      user.FactoryGirl.create(:user)
+      11.times do
+        user.meals.create(cuisine: :italian)
+      end
+      expect(user.meals.count).to eq 10
+    end
+    it "removes the oldest meal" do
+      user.FactoryGirl.create(:user)
+      oldest_meal = user.meals.create(cuisine: :indian)
+      10.times do
+        user.meals.create(cuisine: :italian)
+      end
+      expect(user.meals).not_to include(oldest_meal)
+    end
+  end
 end
