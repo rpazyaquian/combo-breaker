@@ -181,3 +181,5 @@ I would keep Categories in the database. Upon making a search request for what's
 Once that's done, and assuming I know every Category available in a given area, I would then create a Location in the database (formatted as Yelp's returned search parameter), add to it all the respective Categories, and save it to the database. Then, if someone makes a request for an address, the app looks up that address in the database, and if it's there, it searches using the categories already known to exist in that area. If not, a new Location is created, and a list of categories available in the area is gotten from the server, etc etc.
 
 There's still the problem of getting what categories are available in the area - the Yelp API only returns 20 results per search, which is definitely not the same as the number of categories in the area. I might just ask them if there's a way they can implement that in their API.
+
+The home controller will take care of this, when it returns a list of all categories in the area. It should iterate through the categories, and check if it exists in the database; if not, add it.
