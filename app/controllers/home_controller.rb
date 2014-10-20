@@ -1,25 +1,7 @@
 class HomeController < ApplicationController
   def index
     # don't you dare say anything
-    @cuisine_options = [
-      ["Italian", "italian"],
-      ["Burgers", "burgers"],
-      ["Mexican", "mexican"],
-      ["Middle Eastern", "mideastern"],
-      ["Sushi Bars", "sushi"],
-      ["Japanese", "japanese"],
-      ["American (New)", "newamerican"],
-      ["Sandwiches", "sandwiches"],
-      ["Bagels", "bagels"],
-      ["Thai", "thai"],
-      ["Indian", "indpak"],
-      ["Vietnamese", "vietnamese"],
-      ["American (Traditional)", "tradamerican"],
-      ["Seafood", "seafood"],
-      ["Korean", "korean"],
-      ["Creperies", "creperies"],
-      ["Pizza", "pizza"]
-    ]
+    @cuisines = Category.all_categories
     @distance_units = [
       :km,
       :mi
