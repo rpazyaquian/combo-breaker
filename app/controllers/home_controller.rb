@@ -44,7 +44,18 @@ class HomeController < ApplicationController
       blacklist = [
         ['Lounges', 'lounges'],
         ['Bars', 'bars'],
-
+        ["Fruits & Veggies", 'markets'],
+        ["Salad", "salad"]
+        ["Bakeries", 'bakeries'],
+        ["Coffee & Tea", 'coffee'],
+        ["Food Stands", 'foodstands'],
+        ["Food Trucks", "foodtrucks"],
+        ["Fast Food", "hotdogs"],
+        ["Diners", "diners"],
+        ["Breakfast & Brunch", "breakfast_brunch"],
+        ["Jazz & Blues", "jazzandblues"],
+        ["Venues & Event Spaces", "venues"],
+        ["Steakhouses", "steak"]
       ]
     end
 
