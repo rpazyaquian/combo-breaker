@@ -27,15 +27,59 @@ class HomeController < ApplicationController
   end
 
   def search
+    # this looks way too convoluted.
+    # grab results from local area
+    # get list of categories from local area
+    # filter out cafes, bars, etc. and the last-eaten cuisine
+    # choose a random cuisine from what's left
+    # grab results filtered by that cuisine.
+
+    # grab results from local area
     results = search_api(search_params)
-    filtered_results = filter_results(results, last_cuisine)
-    @businesses = filtered_results[:businesses]
-    @cuisine = filtered_results[:cuisine]
+
+    # get list of categories from local area
+    cuisines = get_categories(results)
+
+    # filter out cafes, bars, etc. and the last-eaten cuisine
+
+    filtered_cuisines = filter_cuisines(cuisines)
+
+    # choose a random cuisine from what's left
+
+    random_cuisine = filtered_cuisines.to_a.sample
+
+    @cuisine = random_cuisine[0]
+    search_cuisine = random_cuisine[1]
+
+    # grab results filtered by that cuisine.
+    filtered_results = search_api(search_params, search_cuisine)
+
+    @businesses = filtered_results
+
+    # filtered_results = filter_results(results, last_cuisine)
+    # @businesses = filtered_results[:businesses]
+    # @cuisine = filtered_results[:cuisine]
   end
 
   private
 
   # TODO: move search-specific methods to own module
+
+    def get_categories(businesses)
+      categories = Set.new
+      businesses.each do |business|
+        business.categories.each do |category|
+          categories << category
+        end
+      end
+      categories
+    end
+
+    def filter_cuisines(cuisines)
+      cuisines.delete_if do |cuisine|
+        cuisine[1] == last_cuisine.to_s
+      end
+    end
 
     def filter_results(results, cuisine)
 
@@ -85,9 +129,9 @@ class HomeController < ApplicationController
       }
     end
 
-    def search_api(params)
+    def search_api(params, cuisine = '')
       combo_breaker_client = ComboBreakerClient.new
-      combo_breaker_client.search(params)
+      combo_breaker_client.search(params, cuisine)
     end
 
     def search_params
