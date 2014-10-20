@@ -162,3 +162,22 @@ My controller ended up looking something like this:
         end
 
     end
+
+# Location-Category Caching
+
+I could potentially cache the results for a searched-for location to the database, add categories to that location, and look them up whenever a search is executed on that address. In this case, there'd be something like two models:
+
+    Location
+      has an address (string, from however Yelp interprets the input)
+      has many Categories (i.e. cuisine/restaurant types within the maximum range for a Yelp search)
+
+    Category
+      has a display_name (string, part of Yelp's formatting)
+      has a search_value (string, a symbol-like way of representing the Category - e.g. ['Italian', :italian] or ['Indian', :indpak]
+      belongs to many Locations
+
+I would keep Categories in the database. Upon making a search request for what's in the area, I would iterate through all the categories, check and see if a matching Category exists in the database already, and if not, add it to the database.
+
+Once that's done, and assuming I know every Category available in a given area, I would then create a Location in the database (formatted as Yelp's returned search parameter), add to it all the respective Categories, and save it to the database. Then, if someone makes a request for an address, the app looks up that address in the database, and if it's there, it searches using the categories already known to exist in that area. If not, a new Location is created, and a list of categories available in the area is gotten from the server, etc etc.
+
+There's still the problem of getting what categories are available in the area - the Yelp API only returns 20 results per search, which is definitely not the same as the number of categories in the area. I might just ask them if there's a way they can implement that in their API.

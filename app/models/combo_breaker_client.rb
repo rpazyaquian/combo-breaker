@@ -25,5 +25,8 @@ class ComboBreakerClient
     results.businesses
   end
 
+  def client
+    @client
+  end
 
 end
