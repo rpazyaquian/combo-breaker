@@ -8,6 +8,7 @@ class HomeController < ApplicationController
       :mi,
       :km
     ]
+    @search_form = SearchForm.new
   end
 
   def search
@@ -19,7 +20,7 @@ class HomeController < ApplicationController
     # search_cuisine = random_cuisine[1]
     # filtered_results = search_api(search_params, search_cuisine)
     # @businesses = filtered_results
-    results = search(search_params)
+    results = Search.new(search_params)
     @businesses = results.businesses
     @cuisine = results.cuisine
   end
