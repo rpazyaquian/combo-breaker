@@ -9,7 +9,7 @@ FactoryGirl.define do
       "#{street_address}, #{city}, #{state_abbr}"
     end
     cuisine { Faker::Commerce.color }
-    radius_distance { (1..2).sample}
+    radius_distance { (1..2).to_a.sample}
     radius_units { [:km, :mi].sample }
   end
 end

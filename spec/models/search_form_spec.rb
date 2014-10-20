@@ -22,7 +22,7 @@ RSpec.describe SearchForm, :type => :model do
     expect(search_form).not_to be_valid
   end
   it "is invalid with a radius greater than 40000m" do
-    search_form = FactoryGirl.build(:search_form, radius_distance: 2.5, radius_units: :mi)
+    search_form = FactoryGirl.build(:search_form, radius_distance: 30, radius_units: :mi)
     expect(search_form).not_to be_valid
   end
 end
