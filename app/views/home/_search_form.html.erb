@@ -3,19 +3,19 @@
   <div class='location-form'>
     <%= label_tag(:location, 'What\'s your location?', class: 'form-label') %>
     <div class="form-field">
-      <%= text_field_tag(:location, nil, class: 'form-text' )%>
+      <%= text_field_tag(:location, nil, required: true, class: 'form-text' )%>
     </div>
   </div>
 
   <div class='cuisine-form'>
     <%= label_tag(:cuisine, 'What did you have last?', class: 'form-label') %>
     <div class="form-field">
-      <%= select_tag(:cuisine, options_for_select(@cuisine_options), class: 'form-select' )%>
+      <%= select_tag(:cuisine, options_for_select(@cuisine_options), required: true, class: 'form-select' )%>
     </div>
   </div>
 
   <div class='radius-form'>
-    <%= label_tag(:radius, 'Search radius', class: 'form-label') %>
+    <%= label_tag(:radius, 'How far out do you want to search?', class: 'form-label') %>
 
     <div class="form-field">
       <div class='inner-form-field'>
