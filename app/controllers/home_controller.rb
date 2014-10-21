@@ -12,17 +12,10 @@ class HomeController < ApplicationController
   end
 
   def search
-    # results = search_api(search_params)
-    # cuisines = get_categories(results)
-    # filtered_cuisines = filter_cuisines(cuisines)
-    # random_cuisine = filtered_cuisines.to_a.sample
-    # @cuisine = random_cuisine[0]
-    # search_cuisine = random_cuisine[1]
-    # filtered_results = search_api(search_params, search_cuisine)
-    # @businesses = filtered_results
-    results = Search.new(search_params)
-    @businesses = results.businesses
-    @cuisine = results.cuisine
+    search = Search.new(search_params)
+    @businesses = search.businesses
+    @cuisine = search.cuisine
+    @location = search.location
   end
 
   private

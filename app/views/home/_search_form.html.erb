@@ -1,32 +1,43 @@
-<%= form_tag('/search', { method: "post", class: 'search-form', role: 'form'}) do %>
+<%= form_for @search_form, url: search_path, html: { class: 'form-horizontal'}, role: 'form' do |f| %>
 
-  <div class='location-form'>
-    <%= label_tag(:location, 'What\'s your location?', class: 'form-label') %>
-    <div class="form-field">
-      <%= text_field_tag(:location, nil, required: true, class: 'form-text' )%>
+  <div class="form-group">
+
+    <div class="col-sm-3">
+      <%= f.label :location, "What's your current location?" %>
+    </div>
+
+    <div class='col-sm-9'>
+      <%= f.text_field :location, class: 'form-control'%>
     </div>
   </div>
 
-  <div class='cuisine-form'>
-    <%= label_tag(:cuisine, 'What did you have last?', class: 'form-label') %>
-    <div class="form-field">
-      <%= select_tag(:cuisine, options_for_select(@cuisine_options), required: true, class: 'form-select' )%>
+  <div class='form-group'>
+
+    <div class="col-sm-3">
+      <%= f.label :cuisine, "What did you have for your last meal?" %>
+    </div>
+
+    <div class='col-sm-3'>
+      <%= f.select :cuisine, options_for_select(@cuisine_options), {}, { class: 'form-control' } %>
     </div>
   </div>
 
-  <div class='radius-form'>
-    <%= label_tag(:radius, 'How far out do you want to search?', class: 'form-label') %>
+  <div class='form-group'>
 
-    <div class="form-field">
-      <div class='inner-form-field'>
-        <%= number_field_tag(:radius_distance, 2, in: 1..4, step: 1, class: 'form-number' )%>
+    <div class='col-sm-3'>
+      <%= f.label :cuisine, "How far out do you want to search?" %>
+    </div>
+
+    <div class='form-group col-sm-9'>
+      <div class='col-sm-6'>
+      <%= f.number_field :radius_distance, class: 'form-control', value: 1 %>
       </div>
-      <div class='inner-form-field'>
-        <%= select_tag(:radius_units, options_for_select(@distance_units), class: 'form-select' )%>
+      <div class='col-sm-6'>
+      <%= f.select :radius_units, options_for_select(@distance_units), {}, { class: 'form-control' } %>
       </div>
     </div>
   </div>
 
-  <%= submit_tag "I'm hungry!", class: 'search-button' %>
+  <%= f.submit "I'm hungry!", class: 'btn btn-default'%>
 
 <% end %>

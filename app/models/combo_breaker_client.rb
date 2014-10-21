@@ -22,7 +22,7 @@ class ComboBreakerClient
     rescue Yelp::Error::UnavailableForLocation => e
       raise LocationNotFound, "Location not found in Yelp API."
     end
-    results.businesses
+    results
   end
 
   def client

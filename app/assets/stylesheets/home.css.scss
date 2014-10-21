@@ -16,41 +16,6 @@
 
 }
 
-// Search form styling
-
-.search-form {
-  @extend .form-horizontal;
-}
-
-.location-form,
-.cuisine-form,
-.radius-form {
-  @extend .form-group;
-}
-
-.form-label {
-  @extend .col-sm-3;
-}
-
-.form-field {
-  @extend .col-sm-9;
-}
-
-.inner-form-field {
-  @extend .col-sm-6;
-}
-
-.form-text,
-.form-select,
-.form-number {
-  @extend .form-control;
-}
-
-.search-button {
-  @extend .btn;
-  @extend .btn-default;
-}
-
 // Restaurant list display styling
 
 .restaurant-list {
