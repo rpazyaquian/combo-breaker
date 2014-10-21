@@ -13,6 +13,10 @@ class HomeController < ApplicationController
     search_form = SearchForm.new(search_form_params)
 
     if search_form.valid?
+      # if search form is valid,
+      # add the last_cuisine to the user's meals.
+      # then run a search on the location for a random cuisine.
+      # where does the random cuisine get determined?
       location = search_form_params[:location]
       current_user.meals.create(cuisine: last_cuisine.to_sym)
       search = Search.new(location)
