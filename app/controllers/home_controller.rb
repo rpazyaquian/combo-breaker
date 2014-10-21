@@ -13,10 +13,8 @@ class HomeController < ApplicationController
 
   def search
     search = Search.new(search_params, last_cuisine)
-    search.search
     @businesses = search.businesses
     @cuisine = search.cuisine
-    @location = search.location
   end
 
   private

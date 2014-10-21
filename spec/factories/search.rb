@@ -2,9 +2,12 @@
 
 FactoryGirl.define do
   factory :search do
-    location {  }
-    cuisine {  }
-    distance {  }
-    unit {  }
+    location do
+      street_address = Faker::Address.street_address
+      city = Faker::Address.city
+      state_abbr = Faker::Address.state_abbr
+      "#{street_address}, #{city}, #{state_abbr}"
+    end
+    cuisine { Faker::Commerce.color }
   end
 end

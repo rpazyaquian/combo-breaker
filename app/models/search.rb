@@ -13,14 +13,12 @@ class Search
     initial_search = search_client(search_location, search_radius)
     # get a list of filtered cuisines in the area
     cuisines = cuisine_filter(initial_search[:categories])
-    binding.pry
     # choose a random cuisine from that list
     @cuisine = cuisines.to_a.sample
     # repeat search looking for that specific cuisine
     cuisine_search = search_client(search_location, search_radius, @cuisine[1])
     # return the businesses, the cuisine, and the location.
     @businesses = cuisine_search[:businesses]
-    binding.pry
     @location = cuisine_search[:location]
   end
 
