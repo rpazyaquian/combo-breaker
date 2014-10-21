@@ -7,14 +7,13 @@ RSpec.describe ComboBreakerClient, :type => :model do
     @params =       {
         location: 'Coolidge Corner, Brookline, MA',
         cuisine: :chinese,
-        radius: 10000
       }
-    @results = @combo_breaker_client.search(@params)
+    @results = @combo_breaker_client.search_api(@params)
   end
 
-  it "returns a list of businesses in the area" do
+  it "returns a BurstStructure thing" do
     # an array of hashes
-    expect(@results).to be_a(Array)
+    expect(@results).to be_a(BurstStruct::Burst)
   end
 
 end

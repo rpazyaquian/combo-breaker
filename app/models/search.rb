@@ -32,6 +32,7 @@ class Search
     end
 
     def random_cuisine(meal_history)
+      binding.pry
       all_categories = Category.all
       filtered_categories = []
       all_categories.each do |category|
@@ -42,7 +43,7 @@ class Search
 
     def get_businesses(location, cuisine)
       search_params = { location: location, cuisine: cuisine }
-      @client.search_api(search_params)
+      @client.search_api(search_params).businesses
       # returns a list of businesses
     end
 
