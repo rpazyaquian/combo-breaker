@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 
-  include HomeHelper
-
   def index
     @cuisine_options = Category.all_categories.sort_by { |category| category[0] }
     @distance_units = [
@@ -12,10 +10,17 @@ class HomeController < ApplicationController
   end
 
   def search
-    search = Search.new(search_params, last_cuisine)
-    search.search
-    @businesses = search.businesses
-    @cuisine = search.cuisine
+    search_form = SearchForm.new(search_form_params)
+
+    if search_form.valid?
+      location = search_form_params[:location]
+      current_user.meals.create(cuisine: last_cuisine.to_sym)
+      search = Search.new(location)
+      @businesses = search.businesses
+      @cuisine = search.cuisine
+    else
+      redirect_to root_path
+    end
   end
 
   private

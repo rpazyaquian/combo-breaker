@@ -32,6 +32,13 @@ RSpec.describe User, :type => :model do
   end
 
   describe "meal history" do
+    it "returns the ten most recent meal types in an array" do
+      user = FactoryGirl.create(:user)
+      user.meals.create(cuisine: :italian)
+      user.meals.create(cuisine: :indian)
+      user.meals.create(cuisine: :chinese)
+      expect(user.meal_history).to eq [:italian, :indian, :chinese]
+    end
     it "takes a maximum of ten meals" do
       user = FactoryGirl.create(:user)
       11.times do

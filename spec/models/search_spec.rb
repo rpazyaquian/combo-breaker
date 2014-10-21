@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Search, :type => :model do
   it "has a valid factory" do
-    search = FactoryGirl.create(:search)
+    search = FactoryGirl.build(:search)
     expect(search).to be_valid
   end
   it "takes a location and the last-eaten cuisine" do
-    search = FactoryGirl.create(:search,
+    search = FactoryGirl.build(:search,
       location: 'Coolidge Corner, Brookline, MA',
       cuisine: 'pizza'
       )
@@ -16,7 +16,7 @@ RSpec.describe Search, :type => :model do
   describe "#search" do
 
     before(:each) do
-      @search = FactoryGirl.create(:search,
+      @search = FactoryGirl.build(:search,
         location: 'Coolidge Corner, Brookline, MA',
         cuisine: 'pizza'
       )

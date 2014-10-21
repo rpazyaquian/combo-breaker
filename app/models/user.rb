@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
       self.meals.first.destroy
     end
   end
+
+  def meal_history
+    self.meals.map do |meal|
+      meal.cuisine.to_sym
+    end
+  end
 end
