@@ -11,12 +11,10 @@ class Search
     search_radius = params[:radius]
     # get all the businesses in the area
     initial_search = search_client(search_location, search_radius)
-    # get a list of cuisines in the area
-    all_cuisines = initial_search.cuisines
-    # filter out cuisines that are in the blacklist
-    valid_cuisines = category_filter(all_cuisines)
+    # get a list of filtered cuisines in the area
+    cuisines = cuisine_filter(initial_search[:categories])
     # choose a random cuisine from that list
-    @cuisine = valid_cuisines.sample
+    @cuisine = cuisines.sample
     # repeat search looking for that specific cuisine
     cuisine_search = search_client(search_location, search_radius, @cuisine)
     # return the businesses, the cuisine, and the location.
@@ -31,10 +29,31 @@ class Search
     end
 
     def search_client(location, radius, category = '')
-      @client.search(location, {
+      results = @client.search(location, {
         term: 'restaurant',
         radius: radius,
         category: ''
         })
+
+      {
+        location: results.region,
+        businesses: results.businesses,
+        categories: get_categories(results.businesses)
+      }
+    end
+
+    def get_categories(businesses)
+      categories = Set.new
+      businesses.each do |business|
+        business.categories.each do |category|
+          categories << category
+        end
+      end
+      categories
+    end
+
+    def cuisine_filter(categories)
+      # assuming categories is a set
+
     end
 end
