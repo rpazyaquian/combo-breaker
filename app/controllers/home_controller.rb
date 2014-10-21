@@ -12,7 +12,8 @@ class HomeController < ApplicationController
   end
 
   def search
-    search = Search.new(search_params)
+    search = Search.new
+    search.search(search_params, last_cuisine)
     @businesses = search.businesses
     @cuisine = search.cuisine
     @location = search.location
@@ -22,13 +23,17 @@ class HomeController < ApplicationController
 
     def search_params
       {
-        location: params[:location],
-        radius: meters(params[:radius_distance], params[:radius_units].to_sym)
+        location: search_form_params[:location],
+        radius: meters(search_form_params[:radius_distance], search_form_params[:radius_units])
       }
     end
 
+    def search_form_params
+      params.require(:search_form).permit(:location, :cuisine, :radius_distance, :radius_units)
+    end
+
     def last_cuisine
-      params[:cuisine].to_sym
+      search_form_params[:cuisine].to_sym
     end
 
     def meters(distance, units)
