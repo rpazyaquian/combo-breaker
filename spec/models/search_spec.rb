@@ -5,31 +5,30 @@ RSpec.describe Search, :type => :model do
   before(:all) do
     @user = FactoryGirl.create(:user)
     5.times do
-      meal = FactoryGirl.create(:meal, cuisine: 'italian')
-      @user.meals << meal
+      @user.meals.create(cuisine: 'italian')
     end
   end
 
-  it "has a valid factory" do
-    search = FactoryGirl.create(:search)
-    expect(search).to be_valid
-  end
-
   it "takes a location and a user's meal history" do
-    search = FactoryGirl.create(:search,
+    search = FactoryGirl.build(:search,
       location: 'Coolidge Corner, Brookline, MA',
       meal_history: @user.meal_history
       )
-    expect(search).to be_valid
+    expect(search.meal_history).to eq @user.meal_history
   end
 
   describe "#search" do
 
     before(:all) do
-      @search = FactoryGirl.create(:search,
+      @search = FactoryGirl.build(:search,
         location: 'Coolidge Corner, Brookline, MA',
         meal_history: @user.meal_history
       )
+    end
+
+    it "returns a random cuisine choice" do
+      # can't have a blank cuisine return
+      expect(@search.cuisine).to be_truthy
     end
 
     it "returns a chosen cuisine that is not in the meal history" do

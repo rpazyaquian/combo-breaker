@@ -8,6 +8,16 @@ FactoryGirl.define do
       state_abbr = Faker::Address.state_abbr
       "#{street_address}, #{city}, #{state_abbr}"
     end
-    cuisine { Faker::Commerce.color }
+    meal_history do
+      meals = []
+      3.times do
+        meals << Faker::Commerce.color
+      end
+      meals
+    end
+
+    initialize_with do
+      new(location, meal_history)
+    end
   end
 end

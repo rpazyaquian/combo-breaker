@@ -35,10 +35,10 @@ RSpec.describe Category, :type => :model do
     category2 = FactoryGirl.create(:category)
     expect(Category.all_categories).to include([
         category1.display_name,
-        category1.search_value.to_sym
+        category1.search_value
       ],[
         category2.display_name,
-        category2.search_value.to_sym
+        category2.search_value
       ])
   end
 end
