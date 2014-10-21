@@ -6,7 +6,7 @@ class Search
     @search_params = search_params
   end
 
-  def search()
+  def search
     search_location = @search_params[:location]
     search_radius = @search_params[:radius]
     # get all the businesses in the area
