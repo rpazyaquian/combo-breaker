@@ -1,4 +1,4 @@
-<%= form_for @search_form, url: search_path, html: { class: 'form-horizontal'}, role: 'form' do |f| %>
+<%= form_for @search_form, url: search_path, html: { class: 'form-horizontal' }, role: 'form' do |f| %>
 
   <div class="form-group">
 
@@ -9,6 +9,7 @@
     <div class='col-sm-9'>
       <%= f.text_field :location, class: 'form-control'%>
     </div>
+
   </div>
 
   <div class='form-group'>
@@ -20,6 +21,7 @@
     <div class='col-sm-3'>
       <%= f.select :cuisine, options_for_select(@cuisine_options), {}, { class: 'form-control' } %>
     </div>
+
   </div>
 
   <div class='form-group'>
@@ -29,13 +31,17 @@
     </div>
 
     <div class='form-group col-sm-9'>
+
       <div class='col-sm-6'>
       <%= f.number_field :radius_distance, class: 'form-control', value: 1 %>
       </div>
+
       <div class='col-sm-6'>
       <%= f.select :radius_units, options_for_select(@distance_units), {}, { class: 'form-control' } %>
       </div>
+
     </div>
+
   </div>
 
   <%= f.submit "I'm hungry!", class: 'btn btn-default'%>
