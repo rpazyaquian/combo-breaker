@@ -12,8 +12,8 @@ class HomeController < ApplicationController
   end
 
   def search
-    search = Search.new
-    search.search(search_params, last_cuisine)
+    search = Search.new(search_params, last_cuisine)
+    search.search
     @businesses = search.businesses
     @cuisine = search.cuisine
     @location = search.location
@@ -33,7 +33,7 @@ class HomeController < ApplicationController
     end
 
     def last_cuisine
-      search_form_params[:cuisine].to_sym
+      Category.where(search_value: search_form_params[:cuisine]).first
     end
 
     def meters(distance, units)

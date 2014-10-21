@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
 
   def self.all_categories
     Category.all.map do |category|
-      [category.display_name, category.search_value.to_sym]
+      [category.display_name, category.search_value]
     end
   end
 end
