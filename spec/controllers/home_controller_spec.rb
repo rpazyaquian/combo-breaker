@@ -5,11 +5,10 @@ RSpec.describe HomeController, :type => :controller do
     it "should return a 200 response" do
       post :search, search_form: {
         location: 'Coolidge Corner, Brookline, MA',
-        cuisine: 'burgers',
-        radius_distance: 1,
-        radius_units: 'mi'
+        cuisine: 'burgers'
       }
       expect(response.status).to eq(200)
+    it "should redirect to "
     end
   end
 end
