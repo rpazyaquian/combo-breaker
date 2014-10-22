@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
 
-  include HomeHelper
-
   def index
     @cuisine_options = Category.all_categories.sort_by { |category| category[0] }
     @distance_units = [

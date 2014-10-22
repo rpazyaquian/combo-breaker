@@ -24,26 +24,6 @@
 
   </div>
 
-  <div class='form-group'>
-
-    <div class='col-sm-3'>
-      <%= f.label :cuisine, "How far out do you want to search?" %>
-    </div>
-
-    <div class='form-group col-sm-9'>
-
-      <div class='col-sm-6'>
-      <%= f.number_field :radius_distance, class: 'form-control', value: 1 %>
-      </div>
-
-      <div class='col-sm-6'>
-      <%= f.select :radius_units, options_for_select(@distance_units), {}, { class: 'form-control' } %>
-      </div>
-
-    </div>
-
-  </div>
-
   <%= f.submit "I'm hungry!", class: 'btn btn-default'%>
 
 <% end %>

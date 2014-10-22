@@ -35,8 +35,11 @@ class Search
   private
 
     def search
-      @cuisine = random_cuisine(@meal_history)
-      @businesses = get_businesses(@location, @cuisine)
+      @businesses = []
+      while @businesses.length == 0
+        @cuisine = random_cuisine(@meal_history)
+        @businesses = get_businesses(@location, @cuisine)
+      end
     end
 
     def random_cuisine(meal_history)
