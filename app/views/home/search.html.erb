@@ -1,7 +1,9 @@
 <section class='col-sm-8 col-sm-offset-2'>
+
+  <div class="text-center">
   <p>Tonight, you are having:</p>
 
-  <h2><%= @cuisine %></h2>
+  <h1><%= @cuisine %></h2>
 
   <p>Be thankful.</p>
 
@@ -10,6 +12,7 @@
     <span><%= @cuisine %></span>
     in your area:
   </p>
+  </div>
 
   <div class='row'>
     <% @businesses.each do |business| %>
