@@ -18,8 +18,20 @@
           <li>
             <%= link_to "Sign out", sign_out_path, class: 'signout-link' %>
           </li>
+
           <li>
             <%= link_to "Edit profile", edit_profile_path, class: 'edit-profile-link' %>
+          </li>
+
+          <li>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Meal History</button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <% current_user.meal_history.each do |meal| %>
+                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= meal %></a></li>
+                <% end %>
+              </ul>
+            </div>
           </li>
 
         <% else %>

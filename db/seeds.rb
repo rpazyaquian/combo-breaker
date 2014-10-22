@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Category.all.each do |category|
+  category.destroy
+end
+
 categories = ["Afghan", :afghani],
 ["African", :african],
 ["American (New)", :newamerican],
