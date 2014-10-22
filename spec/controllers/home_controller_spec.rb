@@ -37,15 +37,16 @@ RSpec.describe HomeController, :type => :controller do
     context "with a valid form" do
 
       it "adds the cuisine type to the user's history" do
-        post :search, { search_form: @invalid_search_form }, { user_id: @user.id }
+        post :search, { search_form: @search_form }, { user_id: @user.id }
+        @user = User.find(@user.id)
         expect(@user.meal_history).to include('pizza')
       end
       it "assigns businesses to @businesses" do
-        post :search, { search_form: @invalid_search_form }, { user_id: @user.id }
+        post :search, { search_form: @search_form }, { user_id: @user.id }
         expect(assigns(:businesses)).not_to be_nil
       end
       it "assigns a cuisine to @cuisine" do
-        post :search, { search_form: @invalid_search_form }, { user_id: @user.id }
+        post :search, { search_form: @search_form }, { user_id: @user.id }
         expect(assigns(:cuisine)).not_to be_nil
       end
 

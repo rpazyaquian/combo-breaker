@@ -35,7 +35,7 @@ RSpec.describe Search, :type => :model do
     end
 
     it "returns a random cuisine choice" do
-      # can't have a blank cuisine return
+      # can't return a blank cuisine
       expect(@search.cuisine).to be_truthy
     end
 
@@ -44,8 +44,9 @@ RSpec.describe Search, :type => :model do
     end
 
     it "returns a list of businesses with that cuisine" do
+      full_cuisine = Category.where(search_value: @search.cuisine).first.full_name
       business = @search.businesses.sample
-      expect(business.categories).to include(@search.cuisine)
+      expect(business.categories).to include(full_cuisine)
     end
 
   end

@@ -12,10 +12,15 @@ class HomeController < ApplicationController
   end
 
   def search
-    search = Search.new(search_params, last_cuisine)
-    search.search
-    @businesses = search.businesses
-    @cuisine = search.cuisine
+    @search_form = SearchForm.new(search_form_params)
+    if @search_form.valid?
+      current_user.meals.create(cuisine: last_cuisine)
+      search = Search.new(search_params)
+      @businesses = search.businesses
+      @cuisine = search.cuisine
+    else
+      redirect_to root_path
+    end
   end
 
   private

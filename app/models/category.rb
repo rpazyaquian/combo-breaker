@@ -5,7 +5,11 @@ class Category < ActiveRecord::Base
 
   def self.all_categories
     Category.all.map do |category|
-      [category.display_name, category.search_value]
+      category.full_name
     end
+  end
+
+  def full_name
+    [self.display_name, self.search_value]
   end
 end

@@ -1,9 +1,9 @@
 class Search
 
-  def initialize(location, meal_history)
+  def initialize(search_params)
     @client = ComboBreakerClient.new
-    @meal_history = meal_history
-    @location = location
+    @meal_history = search_params[:meal_history]
+    @location = search_params[:location]
 
     search
   end
@@ -20,8 +20,16 @@ class Search
     @location
   end
 
+  def location=(location)
+    @location = location
+  end
+
   def meal_history
     @meal_history
+  end
+
+  def meal_history=(meal_history)
+    @meal_history = meal_history
   end
 
   private
@@ -32,7 +40,6 @@ class Search
     end
 
     def random_cuisine(meal_history)
-      binding.pry
       all_categories = Category.all
       filtered_categories = []
       all_categories.each do |category|

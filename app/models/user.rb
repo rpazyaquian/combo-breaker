@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   def meal_history
-    self.meals.map do |meal|
+    self.meals.sort_by(&:created_at).map do |meal|
       meal.cuisine
     end
   end
