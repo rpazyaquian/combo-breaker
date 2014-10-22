@@ -11,16 +11,15 @@
     in your area:
   </p>
 
-  <ul class='restaurant-list'>
+  <div class='restaurant-list row'>
     <% @businesses.each do |business| %>
-      <li class='restaurant-listing'>
+      <div class='restaurant-listing col-sm-6 col-lg-3'>
         <% if business.respond_to?(:image_url) %>
-          <%= image_tag business.image_url, class: 'restaurant-image' %>
+          <%= render partial: 'home/restaurant_thumbnail', locals: { business: business, image_url: business.image_url } %>
         <% else %>
-          <%= image_tag 'http://placehold.it/100x100', class: 'placeholder-image' %>
+          <%= render partial: 'home/restaurant_thumbnail', locals: { business: business, image_url: 'http://placehold.it/100x100' } %>
         <% end %>
-        <%= link_to business.name, business.url, class: 'restaurant-link' %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </section>
