@@ -183,3 +183,10 @@ Once that's done, and assuming I know every Category available in a given area, 
 There's still the problem of getting what categories are available in the area - the Yelp API only returns 20 results per search, which is definitely not the same as the number of categories in the area. I might just ask them if there's a way they can implement that in their API.
 
 The home controller will take care of this, when it returns a list of all categories in the area. It should iterate through the categories, and check if it exists in the database; if not, add it.
+
+## Problems
+
+I've been running into a few problems during this project:
+
+- I tend to get really caught up in refactoring a single thing. Just recently I basically redid the entire home controller/search/API client suite because it got so screwed up.
+- I made a lot of design decisions that I would have known would be bad choices had I known what I was doing. For example, the project ended up being tied way too closely to the Yelp API, making it extremely annoying to plug in the Google Places API instead.
