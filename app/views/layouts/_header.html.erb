@@ -1,50 +1,54 @@
-<header class='row'>
-  <nav class='topbar' role='navigation'>
+<header>
+  <nav class='navbar navbar-default' role='navigation'>
 
-    <div class='topbar-container'>
+    <% if signed_in? %>
+      <div class="navbar-header">
+        <a class='navbar-brand'>Welcome, <%= current_user.name %></a>
+      </div>
+    <% end %>
 
-      <% if signed_in? %>
-        <p class='welcome-text'>Welcome, <%= current_user.name %></p>
-      <% end %>
-
-      <ul class='topbar-links'>
-
+    <div class='collapse navbar-collapse' id='navbar-collapse-3'>
+      <ul class='nav navbar-nav'>
         <li>
-          <%= link_to "Home", root_path, class: 'home-link' %>
+          <%= link_to "Home", root_path %>
         </li>
 
         <% if signed_in? %>
 
           <li>
-            <%= link_to "Sign out", sign_out_path, class: 'signout-link' %>
+            <%= link_to "Sign out", sign_out_path %>
           </li>
 
           <li>
-            <%= link_to "Edit profile", edit_profile_path, class: 'edit-profile-link' %>
-          </li>
-
-          <li>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Meal History</button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <% current_user.meal_history.each do |meal| %>
-                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= meal %></a></li>
-                <% end %>
-              </ul>
-            </div>
+            <%= link_to "Edit profile", edit_profile_path %>
           </li>
 
         <% else %>
 
           <li>
-            <%= link_to "Register", new_user_path, class: 'register-link' %>
+            <%= link_to "Register", new_user_path %>
           </li>
           <li>
-            <%= link_to "Sign in", sign_in_path, class: 'signin-link' %>
+            <%= link_to "Sign in", sign_in_path %>
           </li>
 
         <% end %>
 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class='dropdown'>
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Meal History <span class='caret'></span>
+          </a>
+
+          <ul class="dropdown-menu" role="menu">
+            <% current_user.meal_history.each do |meal| %>
+              <li><a href="#"><%= meal %></a></li>
+            <% end %>
+          </ul>
+
+        </li>
       </ul>
     </div>
 

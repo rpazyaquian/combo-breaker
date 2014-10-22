@@ -1,23 +1,23 @@
 <%= form_for @user do |f| %>
-  <div class="email-form">
-    <%= f.label :email, class: 'form-label' %>
+  <div class="form-group">
+    <%= f.label :email %>
     <%= f.email_field :email, class: "form-control" %>
   </div>
 
-  <div class="name-form">
-    <%= f.label :name, class: 'form-label' %>
+  <div class="form-group">
+    <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="password-form">
-    <%= f.label :password, class: 'form-label' %>
+  <div class="form-group">
+    <%= f.label :password %>
     <%= f.password_field :password, class: "form-control" %>
   </div>
 
-  <div class="password-confirmation-form">
-    <%= f.label :password_confirmation, class: 'form-label' %>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: 'btn btn-default' %>
 <% end %>

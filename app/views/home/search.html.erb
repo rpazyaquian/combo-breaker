@@ -1,19 +1,19 @@
-<section class='search-results'>
+<section class='col-sm-8 col-sm-offset-2'>
   <p>Tonight, you are having:</p>
 
-  <h2 class='cuisine'><%= @cuisine %></h2>
+  <h2><%= @cuisine %></h2>
 
   <p>Be thankful.</p>
 
   <p>
     Also, here are some restaurants tagged
-    <span class='cuisine-inline'><%= @cuisine %></span>
+    <span><%= @cuisine %></span>
     in your area:
   </p>
 
-  <div class='restaurant-list row'>
+  <div class='row'>
     <% @businesses.each do |business| %>
-      <div class='restaurant-listing col-sm-6 col-lg-3'>
+      <div class='col-sm-6 col-lg-3'>
         <% if business.respond_to?(:image_url) %>
           <%= render partial: 'home/restaurant_thumbnail', locals: { business: business, image_url: business.image_url } %>
         <% else %>

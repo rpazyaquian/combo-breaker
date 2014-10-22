@@ -1,17 +1,3 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-@import "bootstrap";
-
-// Sign-in form
-
-.email-form,
-.password-form {
-  @extend .form-group;
-}
-
-.signin-button {
-  @extend .btn;
-  @extend .btn-default;
-}

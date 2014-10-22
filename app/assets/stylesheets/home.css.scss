@@ -1,27 +1,3 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-@import "bootstrap";
-
-// Search results page
-
-.search-results {
-  @extend .col-sm-8;
-  @extend .col-sm-offset-2;
-
-  p, h1, h2 {
-    @extend .text-center;
-  }
-
-}
-
-// Restaurant list display styling
-
-.restaurant-list {
-  @extend .list-group;
-}
-
-.restaurant-listing {
-  @extend .list-group-item;
-}
