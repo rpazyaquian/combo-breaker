@@ -10,6 +10,7 @@ class HomeController < ApplicationController
   end
 
   def search
+<<<<<<< HEAD
     search_form = SearchForm.new(search_form_params)
 
     if search_form.valid?
@@ -22,6 +23,14 @@ class HomeController < ApplicationController
       search = Search.new(location)
       @businesses = search.businesses
       @cuisine = search.cuisine
+=======
+    @search_form = SearchForm.new(search_form_params)
+    if @search_form.valid?
+      current_user.meals.create(cuisine: last_cuisine)
+      search = Search.new(search_params)
+      @businesses = search.businesses
+      @cuisine = Category.where(search_value: search.cuisine).first.display_name
+>>>>>>> google_places
     else
       redirect_to root_path
     end
@@ -32,20 +41,16 @@ class HomeController < ApplicationController
     def search_params
       {
         location: search_form_params[:location],
-        radius: meters(search_form_params[:radius_distance], search_form_params[:radius_units])
+        meal_history: current_user.meal_history
       }
     end
 
     def search_form_params
-      params.require(:search_form).permit(:location, :cuisine, :radius_distance, :radius_units)
+      params.require(:search_form).permit(:location, :cuisine)
     end
 
     def last_cuisine
-      Category.where(search_value: search_form_params[:cuisine]).first
-    end
-
-    def meters(distance, units)
-      Unit("#{distance} #{units}").convert_to('m').scalar
+      search_form_params[:cuisine]
     end
 
 end

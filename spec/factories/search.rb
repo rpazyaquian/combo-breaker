@@ -2,12 +2,21 @@
 
 FactoryGirl.define do
   factory :search do
-    location do
+    search_params do
       street_address = Faker::Address.street_address
       city = Faker::Address.city
       state_abbr = Faker::Address.state_abbr
-      "#{street_address}, #{city}, #{state_abbr}"
+      location = 'Coolidge Corner, Brookline, MA'
+      meals = []
+      3.times do
+        meals << Faker::Commerce.color
+      end
+      meals
+      { location: location, meal_history: meals}
     end
-    cuisine { Faker::Commerce.color }
+
+    initialize_with do
+      new(search_params)
+    end
   end
 end

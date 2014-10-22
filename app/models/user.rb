@@ -12,8 +12,13 @@ class User < ActiveRecord::Base
   end
 
   def meal_history
+<<<<<<< HEAD
     self.meals.map do |meal|
       meal.cuisine.to_sym
+=======
+    self.meals.sort_by(&:created_at).map do |meal|
+      meal.cuisine
+>>>>>>> google_places
     end
   end
 end
