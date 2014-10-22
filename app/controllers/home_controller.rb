@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       current_user.meals.create(cuisine: last_cuisine)
       search = Search.new(search_params)
       @businesses = search.businesses
-      @cuisine = search.cuisine
+      @cuisine = Category.where(search_value: search.cuisine).first.display_name
     else
       redirect_to root_path
     end
