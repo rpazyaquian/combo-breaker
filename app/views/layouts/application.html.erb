@@ -11,17 +11,13 @@
 <div class="application-container">
   <%= render 'layouts/header' %>
 
-  <hr>
-
   <% unless flash[:error].nil? %>
     <%= flash[:error] %>
   <% end %>
 
-  <div class='content'>
+  <div class='content row'>
     <%= yield %>
   </div>
-
-  <hr>
 
   <%= render 'layouts/footer' %>
 </div>

@@ -64,3 +64,4 @@ end
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'ruby-units'
+gem 'flat-ui-rails'

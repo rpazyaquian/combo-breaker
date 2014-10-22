@@ -1,11 +1,13 @@
-<h1>C-C-C-Combo Breaker!</h1>
+<section class='home col-sm-8 col-sm-offset-2'>
+  <h1 class='text-center'>C-C-C-Combo Breaker!</h1>
 
-<% if signed_in? %>
+  <% if signed_in? %>
 
-<%= render 'home/search_form' %>
+    <%= render 'home/search_form' %>
 
-<% else %>
+  <% else %>
 
-<p>Please sign in or register at the top.</p>
+    <p>Please sign in or register at the top.</p>
 
-<% end %>
+  <% end %>
+</section>

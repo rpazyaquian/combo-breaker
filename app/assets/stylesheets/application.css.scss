@@ -19,14 +19,26 @@
 
 // colorbrewer:
 
-$combo-breaker-light-blue: #a6cee3;
-$combo-breaker-blue: #1f78b4;
-$combo-breaker-light-green: #b2df8a;
-$combo-breaker-green: #33a02c;
+// main stuff: we have
+// text
+// background
+// links
+// form-bgs
 
-$body-bg: $combo-breaker-green;
-$text-color: $combo-breaker-light-green;
-$link-color: $combo-breaker-light-blue;
+// $combo-breaker-light-blue: #a6cee3;
+// $combo-breaker-blue: #1f78b4;
+// $combo-breaker-light-green: #b2df8a;
+// $combo-breaker-green: #33a02c;
+
+
+
+$body-bg: #3499DB;
+$text-color: #FFF;
+$link-color: #FE8E00;
+// $input-bg: #FFB659;
+$btn-default-bg: #FFA330;
+// $btn-default-color:
+// $btn-default-border:
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
