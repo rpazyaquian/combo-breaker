@@ -55,5 +55,5 @@ categories = ["Afghan", :afghani],
 ["Vietnamese", :vietnamese]
 
 categories.each do |category|
-  Category.find_or_create_by_search_value(category[1])
+  Category.create(display_name: category[0], search_value: category[1])
 end
