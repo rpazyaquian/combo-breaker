@@ -1,3 +1,11 @@
 <h1>C-C-C-Combo Breaker!</h1>
 
+<% if signed_in? %>
+
 <%= render 'home/search_form' %>
+
+<% else %>
+
+<p>Please sign in or register at the top.</p>
+
+<% end %>
