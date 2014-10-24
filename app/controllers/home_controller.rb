@@ -13,9 +13,16 @@ class HomeController < ApplicationController
     @search_form = SearchForm.new(search_form_params)
     if @search_form.valid?
       current_user.meals.create(cuisine: last_cuisine)
-      search = Search.new(search_params)
-      @businesses = search.businesses
-      @cuisine = Category.where(search_value: search.cuisine).first.display_name
+      begin
+        search = Search.new(search_params)
+      rescue StandardError => e
+        flash[:error] = e.message
+        redirect_to root_path
+      end
+      if search
+        @businesses = search.businesses
+        @cuisine = Category.where(search_value: search.cuisine).first.display_name
+      end
     else
       flash[:error] = "No location specified."
       redirect_to root_path
