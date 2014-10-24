@@ -17,6 +17,7 @@ class HomeController < ApplicationController
       @businesses = search.businesses
       @cuisine = Category.where(search_value: search.cuisine).first.display_name
     else
+      flash[:error] = "No location specified."
       redirect_to root_path
     end
   end
