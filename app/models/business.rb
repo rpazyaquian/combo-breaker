@@ -7,6 +7,10 @@ class Business
     @name
   end
 
+  def coords
+    @coords
+  end
+
   private
 
     def build(result)

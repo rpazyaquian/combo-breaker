@@ -20,6 +20,7 @@ class HomeController < ApplicationController
         redirect_to root_path
       end
       if search
+        @init_coords = Geocoder.search(search_form_params[:location]).first.data["geometry"]["location"]
         @businesses = search.businesses
         @cuisine = Category.where(search_value: search.cuisine).first.display_name
       end
