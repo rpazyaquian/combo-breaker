@@ -64,3 +64,5 @@ end
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'ruby-units'
+gem 'google_places'
+gem 'geocoder'
