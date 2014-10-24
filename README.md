@@ -192,3 +192,7 @@ I've been running into a few problems during this project:
 - I made a lot of design decisions that I would have known would be bad choices had I known what I was doing. For example, the project ended up being tied way too closely to the Yelp API, making it extremely annoying to plug in the Google Places API instead.
 - I need to learn how to do Controller, View, etc. testing. That would have made sure everything works and prevented me from getting completely lost when refactoring.
 - I also need to think about the architecture of my app. How should I have known that the Controller would submit a search form to a Search object, which in turns requests data from the Client, which sends it back to Search, which sends back to the Controller...? How do I even know that's the right/best way to do it?
+
+## Switching to Google Places
+
+One thing I've realized is that my app idea and code are heavily intertwined with the Yelp API. The idea of keeping a meal history, sorting by cuisine/category, etc. is
