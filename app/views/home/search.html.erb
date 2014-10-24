@@ -17,11 +17,7 @@
   <div class='row'>
     <% @businesses.each do |business| %>
       <div class='col-sm-6 col-lg-3'>
-        <% if business.respond_to?(:image_url) %>
-          <%= render partial: 'home/restaurant_thumbnail', locals: { business: business, image_url: business.image_url } %>
-        <% else %>
-          <%= render partial: 'home/restaurant_thumbnail', locals: { business: business, image_url: 'http://placehold.it/100x100' } %>
-        <% end %>
+        <%= business.name %>
       </div>
     <% end %>
   </div>
