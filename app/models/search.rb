@@ -53,7 +53,7 @@ class Search
 
     def get_businesses(location, cuisine)
       search_params = { location: location, cuisine: cuisine }
-      @client.search_api(search_params).businesses
+      @client.search_api(search_params)
       # returns a list of businesses
     end
 

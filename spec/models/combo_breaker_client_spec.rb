@@ -3,17 +3,20 @@ require 'rails_helper'
 RSpec.describe ComboBreakerClient, :type => :model do
 
   before(:all) do
-    @combo_breaker_client = ComboBreakerClient.new
+    @combo_breaker_client = FactoryGirl.build(:combo_breaker_client)
     @params =       {
         location: 'Coolidge Corner, Brookline, MA',
         cuisine: :chinese,
       }
-    @results = @combo_breaker_client.search_api(@params)
+    @combo_breaker_client.search_api(@params)
+    @businesses = @combo_breaker_client.businesses
   end
 
-  it "returns a BurstStructure thing" do
-    # an array of hashes
-    expect(@results).to be_a(BurstStruct::Burst)
+  it "has an array of Businesses" do
+    @businesses.each do |business|
+      expect(business).to be_a(Business)
+    end
   end
+
 
 end

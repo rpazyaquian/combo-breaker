@@ -43,11 +43,5 @@ RSpec.describe Search, :type => :model do
       expect(@search.meal_history).not_to include(@search.cuisine)
     end
 
-    it "returns a list of businesses with that cuisine" do
-      full_cuisine = Category.where(search_value: @search.cuisine).first.full_name
-      business = @search.businesses.sample
-      expect(business.categories).to include(full_cuisine)
-    end
-
   end
 end
